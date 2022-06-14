@@ -9,10 +9,9 @@ const path = require('path')
 // console.log('File has been written!')
 
 // Non-blocking, asynchronous way
-fs.readFile(path.join(__dirname,'./txt/start.txt'), 'utf-8', (err, data)=>{
-  if (err){
-    throw err
-  }
-  console.log(data)
+fs.readFile(path.join(__dirname,'./txt/start.txt'), 'utf-8', (err, data1)=>{
+  fs.readFile(path.join(__dirname,`./txt/${data1}.txt`), 'utf-8', (err, data)=>{
+    console.log(data)
+  })
 })
 console.log('Will read the file asynchronously!')
